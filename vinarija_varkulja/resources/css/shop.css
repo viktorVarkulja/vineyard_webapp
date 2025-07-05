@@ -1,0 +1,12 @@
+button.btn-cart{
+    height: 60px;
+    width: 60px; 
+    background-color:rgba(146,128,184,255); 
+    border-color:rgba(146,128,184,255);
+    color:black;
+}
+button.btn-cart:hover{
+    background-color:rgba(131, 116, 166,255);
+    border-color: rgba(131, 116, 166,255);
+    color:white;
+}

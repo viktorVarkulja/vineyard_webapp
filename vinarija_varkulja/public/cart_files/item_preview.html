@@ -1,0 +1,39 @@
+<div class="modal fade" id="itemPreview" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" ng-repeat="item in items">
+            <form name="item_preview" id="item_preview" method="post" ng-submit="addToCart(item);">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Pregled proizvoda</h1>
+                    <button type="button" id="button_close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="/images/{{item.image}}" class="card-img-top rounded-2 col-md-6"  alt="{{item.name}}" />
+                        </div>
+                        <div class="col-md-6">
+                            <p class="h3">{{item.name}}</p>
+                            <p>{{item.size}}</p>
+                            <p>Izaberite količinu:</p>
+                            <div class="row justify-content-md-center">
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" ng-model="item.amount" pattern="^[+]?\d+([.]\d+)?$" required />
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="submit" form="item_preview">
+                    Dodaj u korpu
+                    <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket-fill" viewBox="0 0 16 16">
+                        <path d="M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0z"/>
+                    </svg>
+                </button>
+            </div>
+            
+        </div>
+    </div>
+</div>

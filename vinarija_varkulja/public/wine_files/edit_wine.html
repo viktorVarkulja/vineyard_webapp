@@ -1,0 +1,44 @@
+<div class="card" id="edit_wine" style="display: none;">
+    <div class="card-header">
+       <b>Promeni podatke</b>
+    </div>
+    <div class="card-body">
+        <form name="edit_wine_form" id="edit_wine_form" method="post" ng-submit="updateInfo(currentUser);">
+            <div class="row mb-3">
+                <label clas="col-sm-2 col-label-form">Id</label>
+                <div class="col-sm-10">
+                    <input type="text" name="wine_id" ng-model="currentUser.id" class="form-control"
+                    vaule="{{currentUser.id}}" readonly/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label clas="col-sm-2 col-label-form">Naziv</label>
+                <div class="col-sm-10">
+                    <input type="text" name="wine_name" ng-model="currentUser.name" class="form-control"
+                    vaule="{{currentUser.name}}" required/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label clas="col-sm-2 col-label-form">Godina</label>
+                <div class="col-sm-10">
+                    <input type="text" name="wine_year" ng-model="currentUser.year" class="form-control" 
+                    vaule="{{currentUser.year}}" required pattern="[0-9]+"/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label clas="col-sm-2 col-label-form">Sorta</label>
+                <div class="col-sm-10">
+                    <select name="edit_select" class="form-select"
+                    ng-options="grape.id as grape.name for grape in grapes"  ng-model="currentUser.grapeId">
+                    <option value="?">-- Odaberite sortu --</option>
+                    </select>
+                    
+                </div>
+                <!--grape as grape.name for grape in grapes track by grape.id -->
+            </div>
+            <div class="text-center">
+                <input type="submit" class="btn btn-primary" value="Azuriraj">
+            </div>
+        </form>
+    </div>
+</div>

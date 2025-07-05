@@ -1,0 +1,61 @@
+<div class="card" id="edit_reciept" style="display: none;">
+    <div class="card-header">
+       <b>Promeni podatke</b>
+    </div>
+    <div class="card-body">
+        <form name="edit_reciept_form" id="edit_reciept_form" method="post" ng-submit="updateInfo(currentUser);">
+            <div class="row mb-3">
+                <label clas="col-sm-2 col-label-form">Id</label>
+                <div class="col-sm-10">
+                    <input type="text" name="reciept_id" ng-model="currentUser.id" class="form-control"
+                    vaule="{{currentUser.id}}" readonly/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label clas="col-sm-2 col-label-form">Korisnik</label>
+                <div class="col-sm-10">
+                    <div ng-repeat="user in users | filter : {id: currentUser.user_id}" class="form-control">{{user.id}} | {{ user.name }}</div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label clas="col-sm-2 col-label-form">Ukupno</label>
+                <div class="col-sm-10">
+                    <input type="text" name="reciept_total" ng-model="currentUser.total_RSD" class="form-control" 
+                    vaule="{{currentUser.total_RSD}}" readonly/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label clas="col-sm-2 col-label-form">Artikli</label>
+                <div class="col-sm-10">
+                    <div ng-repeat="article in articles | filter : {reciept_id: currentUser.id}">
+                        <div ng-repeat="bottle in bottles | filter : {id: article.bottle_id}" class="form-control">
+                            {{bottle.name}}, x{{article.bottle_quantity}} 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label clas="col-sm-2 col-label-form">Status</label>
+                <div class="col-sm-10">
+                    <select name="edit_select" class="form-select"
+                    ng-options="status.id as status.name for status in statuses"  ng-model="currentUser.status">
+                    <option value="?">-- Odaberite status --</option>
+                    </select>
+                    
+                </div>
+                <!--grape as grape.name for grape in grapes track by grape.id -->
+            </div>
+            <div class="row mb-3">
+                <label clas="col-sm-2 col-label-form">Datum</label>
+                <div class="col-sm-10">
+                    <input type="hidden" name="reciept_date" ng-model="currentUser.created_at" class="form-control" 
+                    vaule="{{ currentUser.created_at }}" readonly/>
+                    <div class="form-control">{{ currentUser.created_at | date:'dd/MM/yyyy'}}</div>
+                </div>
+            </div>
+            <div class="text-center">
+                <input type="submit" class="btn btn-primary" value="Ažuriraj">
+            </div>
+        </form>
+    </div>
+</div>
